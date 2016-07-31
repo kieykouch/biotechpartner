@@ -1,7 +1,13 @@
 img#biologo {
     zoom: 30%;
 }
+
 p.lead.sectionLead{
     color: #4a4545;
+    font-family: "Times New Roman", Times, serif;
+}
+
+p.lead.sectionLeadAbout{
+    color: #428bca;
     font-family: "Times New Roman", Times, serif;
 }
