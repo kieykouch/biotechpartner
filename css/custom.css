@@ -11,3 +11,7 @@ p.lead.sectionLeadAbout{
     color: #428bca;
     font-family: "Times New Roman", Times, serif;
 }
+
+.marginForPages{
+ margin-top: 30px;   
+}
