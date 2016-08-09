@@ -27,3 +27,7 @@ p.lead.sectionLeadAbout{
 .AboutCoreValueP{
     color: #428bca;
 }
+
+.background-image{
+    -moz-transform:  scale(0.1,0.1);
+}
