@@ -1,9 +1,9 @@
 img#biologo {
-    zoom: 30%;
-    
+    zoom: 30%;    
     -ms-zoom: 0.3;
     -webkit-zoom: 0.3;
     -moz-transform:  scale(0.3,0.3);
+    -moz-transform-origin: left center;
 }
 
 p.lead.sectionLead{
