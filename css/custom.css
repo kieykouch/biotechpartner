@@ -32,3 +32,10 @@ p.lead.sectionLeadAbout{
     -moz-transform:  scale(0.1,0.1);
     -moz-transform-origin: left top;
 }
+
+#DonateButtonNav{
+    background-color: #337ab7;
+    color: #f8f8f8;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
