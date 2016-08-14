@@ -33,6 +33,9 @@
     <script data-cfasync="false" type="text/javascript"
      src="script/form-submission-handler.js">
     </script>
+    <script data-cfasync="false" type="text/javascript"
+     src="script/notify.min.js">
+    </script>
     
     <link rel="stylesheet" href="css/pure-min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -168,8 +171,17 @@
                     placeholder="Tell us what's on your mind..."></textarea>
                   </fieldset>
               
-                  <button class="button-success pure-button button-xlarge">
-                    <i class="fa fa-paper-plane"></i>&nbsp;Send</button>
+                  <button class="button-success pure-button button-xlarge" id="contactusButtonEmail">
+                    <i class="fa fa-paper-plane"></i>&nbsp;Send
+                  </button>
+                  
+                  <script>
+                    $(function() {
+                        $('#contactusButtonEmail').click(function(){
+                            $('#contactusButtonEmail').notify("Sending Email ...", "success", { position:"right" });
+                        });
+                    });
+                  </script>
               
                 </form>
               
