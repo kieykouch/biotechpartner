@@ -30,6 +30,13 @@
     <script src="./Landing Page - Start Bootstrap Theme_files/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/scrollreveal.js/3.3.1/scrollreveal.min.js"></script>
     <script src="script/custom.js"></script>
+    <script data-cfasync="false" type="text/javascript"
+     src="script/form-submission-handler.js">
+    </script>
+    
+    <link rel="stylesheet" href="css/pure-min.css">
+    <link rel="stylesheet" href="css/style.css">
+  
 </head>
 
 <body>
@@ -107,22 +114,77 @@
         </div>
         <!-- /.container -->
     </nav>
-   <section class="strip bg-primary" style="background-color: #9dbdd8;margin-top: 100px;">
+   
+   
+   <div class="container" style="margin-top: 90px;">
+    <header>
+        <h3 class="section-heading">Biotech Partners
+            <p class="lead">
+            800 Dwight Way, B52-2, Berkeley, CA 94710
+            <br>
+            (510) 705-4830
+            <br>
+            BPInfo@biotechpartners.org
+            </p>
+        </h3>
+        
+        
+    </header>
+   </div>
+   
+    <div class="content-section-b">
         <div class="container">
-            <div class="row clearfix">
-                <div class="col-md-8">
-                    <h3 class="text-white pull-left" style="color: #333333;">
-                        <strong>Contact Us Page
-                        </strong>                            
-                    </h3>                    
-                    <h1 style="color: #333333;">
-                        <br>
-                        Contact Biotech Partner
-                    </h1>
-                </div>                    
+            <h2 class="section-heading text-center">Contact Biotech Partners </h2>
+            <aside>
+                 <p>
+                     <br>
+                     We would <em>love</em> to hear from you! </p>
+                     <br>
+                     If you would like to support our efforts, tell us a little more about yourself so a qualified staff member can help you get started today.
+                    
+                 </p>
+             </aside>
+            
+            <form id="gform" method="POST" class="pure-form pure-form-stacked"
+                action="https://script.google.com/macros/s/AKfycbzSLs3W4d7jsWkm3j_YZJUSeyPxlBG1xx1BQH7Jykg6f-5hVun7/exec">
+                  <!-- change the form action to your script url -->
+              
+                  <fieldset class="pure-group">
+                    <label for="name">Full Name: </label>
+                    <input id="name" name="name" placeholder="Full Name e.g John Smith" />
+                  </fieldset>
+                  
+                  <fieldset class="pure-group">
+                    <label for="email"><em>Your</em> Email Address:</label>
+                    <input id="email" name="email" type="email" value=""
+                    required placeholder="youremail@email.com"/>
+                    <span id="email-invalid" style="visibility:hidden">
+                      Must be a valid email address</span>
+                  </fieldset>
+              
+                  <fieldset class="pure-group">
+                    <label for="message">Message: </label>
+                    <textarea id="message" name="message" rows="10"
+                    placeholder="Tell us what's on your mind..."></textarea>
+                  </fieldset>
+              
+                  <button class="button-success pure-button button-xlarge">
+                    <i class="fa fa-paper-plane"></i>&nbsp;Send</button>
+              
+                </form>
+              
+            <!-- Customise the Thankyou Message People See when they submit the form: -->
+            <div style="display:none;" id="thankyou_message">
+              <h2>
+                <em>Thanks you</em>
+                for contacting Biotech Partners!
+              <br>
+                We will get back to you soon!</h2>
             </div>
+        
         </div>
-    </section>        
+    </div>
+   
     <!-- Footer -->
     <footer>
         <div class="container">
