@@ -39,6 +39,14 @@
     
     <link rel="stylesheet" href="css/pure-min.css">
     <link rel="stylesheet" href="css/style.css">
+    
+    <script>
+        $(function() {
+            $('#contactusButtonEmail').click(function(){
+                $('#contactusButtonEmail').notify("Sending Email ...", "success", { position:"right" });
+            });
+        });
+    </script>
   
 </head>
 
@@ -119,7 +127,7 @@
     </nav>
    
    
-   <div class="container" style="margin-top: 90px;">
+   <div class="container" style="margin-top: 105px;">
     <header>
         <h3 class="section-heading">Biotech Partners
             <p class="lead">
@@ -174,15 +182,6 @@
                   <button class="button-success pure-button button-xlarge" id="contactusButtonEmail">
                     <i class="fa fa-paper-plane"></i>&nbsp;Send
                   </button>
-                  
-                  <script>
-                    $(function() {
-                        $('#contactusButtonEmail').click(function(){
-                            $('#contactusButtonEmail').notify("Sending Email ...", "success", { position:"right" });
-                        });
-                    });
-                  </script>
-              
                 </form>
               
             <!-- Customise the Thankyou Message People See when they submit the form: -->
