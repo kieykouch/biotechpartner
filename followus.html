@@ -30,6 +30,24 @@
     <script src="./Landing Page - Start Bootstrap Theme_files/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/scrollreveal.js/3.3.1/scrollreveal.min.js"></script>
     <script src="script/custom.js"></script>
+    <script data-cfasync="false" type="text/javascript"
+     src="script/form-submission-handler.js">
+    </script>
+    <script data-cfasync="false" type="text/javascript"
+     src="script/notify.min.js">
+    </script>
+    
+    <link rel="stylesheet" href="css/pure-min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script>
+        $(function() {
+            $('#contactusButtonEmail').click(function(){
+                $('#contactusButtonEmail').notify("Subscripting Now ...", "success", { position:"right" });
+            });
+        });
+    </script>
+    
 </head>
 
 <body>
@@ -107,22 +125,123 @@
         </div>
         <!-- /.container -->
     </nav>
-   <section class="strip bg-primary" style="background-color: #9dbdd8;margin-top: 100px;">
+   <div class="content-section-b" style="margin-top: 80px;">
         <div class="container">
-            <div class="row clearfix">
-                <div class="col-md-8">
-                    <h3 class="text-white pull-left" style="color: #333333;">
-                        <strong>Follow Us Page
-                        </strong>                            
-                    </h3>                    
-                    <h1 style="color: #333333;">
-                        <br>
-                        Follow Biotech Partner
-                    </h1>
-                </div>                    
+            <div class="row">
+                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Stay Up-to-Date – Follow us on Twitter! 
+                    <br>
+                    <a href="https://twitter.com/BiotechPartner">
+                        @BiotechPartner
+                    </a>
+                    <br>
+                    <br>
+                    <a class="twitter-follow-button"
+                    href="https://twitter.com/BiotechPartner"
+                    data-size="large">
+                    Follow @BiotechPartner
+                    </a>
+                    </h2>
+                </div>
+                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    <a class="twitter-timeline" data-width="500" data-height="500" data-theme="dark" href="https://twitter.com/BiotechPartner">Tweets by BiotechPartner</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+   
+    <div class="content-section-a">
+        <div class="container">
+            <h2 class="section-heading text-center">Join our newsletter</h2>
+            <p class="lead">
+              Well done! You’re about to take an important step towards a staying up to date with us.
+              Complete the fields below to subscribe.
+            </p>
+            
+            
+            <form id="gform" method="POST" class="pure-form pure-form-stacked"
+                action="https://script.google.com/macros/s/AKfycbwyVz2GZvk9Ju-kxyARPAsZKnQDmI1ZmD6uqfjZMPFhcfW3YZA/exec">
+                  <!-- change the form action to your script url -->
+              
+                  <fieldset class="pure-group">
+                    <label for="email"><em>Your</em> Email Address:</label>
+                    <input id="email" name="email" type="email" value=""
+                    required placeholder="youremail@email.com"/>
+                    <span id="email-invalid" style="visibility:hidden">
+                      Must be a valid email address</span>
+                  </fieldset>
+              
+                  <button class="button-success pure-button button-xlarge" id="contactusButtonEmail">
+                    <i class="fa fa-paper-plane"></i>&nbsp;Subscript
+                  </button>
+            </form>
+              
+            <!-- Customise the Thankyou Message People See when they submit the form: -->
+            <div style="display:none;" id="thankyou_message">
+              <h2>
+                <em>Thanks you</em>
+                for subscripting to Biotech Partners!
+              </h2>
+            </div>
+        
+        </div>
+    </div>
+    
+    <div class="content-section-b">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <hr class="section-heading-spacer">
+                    <div class="clearfix"></div>
+                    <h2 class="section-heading">Follow Biotech Partners Facebook Page
+                    <br>
+                    <a href="https://www.facebook.com/Biotech-Partners-116051438422319/">
+                        BiotechPartners
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FBiotech-Partners-116051438422319%2F&tabs=timeline&width=500&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="500" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    
+    <div class="content-section-a"
+    <div class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2>Other Ways to Connect With
+                    <br>
+                    Biotech Partners</h2>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="list-inline banner-social-buttons">
+                        <li>
+                            <a href="https://twitter.com/BiotechPartner" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/user/BiotechPartners?feature=mhee" class="btn btn-default btn-lg"><i class="fa fa-youtube fa-fw"></i> <span class="network-name">Youtube</span></a>
+                        </li>
+                        <li>
+                            <a href="https://www.facebook.com/Biotech-Partners-116051438422319/" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                        </li>                        
+                    </ul>
+                </div>
             </div>
         </div>
-    </section>        
+        <!-- /.container -->
+    </div>
+    </div>
     <!-- Footer -->
     <footer>
         <div class="container">

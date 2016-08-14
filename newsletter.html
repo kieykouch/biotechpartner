@@ -30,6 +30,23 @@
     <script src="./Landing Page - Start Bootstrap Theme_files/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/scrollreveal.js/3.3.1/scrollreveal.min.js"></script>
     <script src="script/custom.js"></script>
+    <script data-cfasync="false" type="text/javascript"
+     src="script/form-submission-handler.js">
+    </script>
+    <script data-cfasync="false" type="text/javascript"
+     src="script/notify.min.js">
+    </script>
+    
+    <link rel="stylesheet" href="css/pure-min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <script>
+        $(function() {
+            $('#contactusButtonEmail').click(function(){
+                $('#contactusButtonEmail').notify("Subscripting Now ...", "success", { position:"right" });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -140,6 +157,45 @@
             </div>
         </div>
      </div>
+     
+     <div class="content-section-b">
+        <div class="container">
+            <h2 class="section-heading text-center">Join our newsletter</h2>
+            <p class="lead">
+              Well done! You’re about to take an important step towards a staying up to date with us.
+              Complete the fields below to subscribe.
+            </p>
+            
+            
+            <form id="gform" method="POST" class="pure-form pure-form-stacked"
+                action="https://script.google.com/macros/s/AKfycbwyVz2GZvk9Ju-kxyARPAsZKnQDmI1ZmD6uqfjZMPFhcfW3YZA/exec">
+                  <!-- change the form action to your script url -->
+              
+                  <fieldset class="pure-group">
+                    <label for="email"><em>Your</em> Email Address:</label>
+                    <input id="email" name="email" type="email" value=""
+                    required placeholder="youremail@email.com"/>
+                    <span id="email-invalid" style="visibility:hidden">
+                      Must be a valid email address</span>
+                  </fieldset>
+              
+                  <button class="button-success pure-button button-xlarge" id="contactusButtonEmail">
+                    <i class="fa fa-paper-plane"></i>&nbsp;Subscript
+                  </button>
+            </form>
+              
+            <!-- Customise the Thankyou Message People See when they submit the form: -->
+            <div style="display:none;" id="thankyou_message">
+              <h2>
+                <em>Thanks you</em>
+                for subscripting to Biotech Partners!
+              </h2>
+            </div>
+        
+        </div>
+    </div>
+    
+    
     
     <!-- Footer -->
     <footer>
