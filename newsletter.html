@@ -136,8 +136,13 @@
                 <h4>
                     Connecting Youth with the World of Biotechnology.
                 </h4>
-                <iframe src="pdf/BP_Fall2015_Newsletter.pdf" style="width:90%; height:2100px;" frameborder="0">                    
-                </iframe>                
+                <iframe d="theFrame" src="pdf/BP_Fall2015_Newsletter.pdf" style="width:90%; height:2100px;" frameborder="0">                    
+                </iframe>
+                <script>
+                document.getElementById("theFrame").contentWindow.onload = function() {
+                    this.document.getElementsByTagName("img")[0].style.width="100%";
+                };
+                </script>
                 <h4>Download It Here:
                 <a href="http://www.biotechpartners.org/pdf/BP_Fall2015_Newsletter.pdf">
                     Fall 2015.pdf
