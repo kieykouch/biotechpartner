@@ -70,6 +70,10 @@ p.lead.sectionLeadAbout{
     position: absolute;
     -moz-transform-origin: 0 0;
     }
+    
+    #theFrame{
+        display: none;
+    }
 }
 
 @media (max-width: 766px) {
@@ -78,5 +82,9 @@ p.lead.sectionLeadAbout{
     max-height: 70%;
     position: absolute;
     -moz-transform-origin: 0 0;
+    }
+    
+    #theFrame{
+        display: none;
     }
 }
