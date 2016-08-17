@@ -47,3 +47,36 @@ p.lead.sectionLeadAbout{
     padding-bottom: 50px;
     background-size: cover;
 }
+
+
+
+@media (min-width: 767px) and (max-width: 993px) {
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-collapse.collapse.in {
+        display: block !important;
+    }
+    .navbar-header .collapse, .navbar-toggle {
+        display:block !important;
+    }
+    .navbar-header {
+        float:none;
+    }
+    
+    img#biologo {
+    max-width: 52%; /*set the width or max-width*/
+    max-height: 52%;
+    position: absolute;
+    -moz-transform-origin: 0 0;
+    }
+}
+
+@media (max-width: 766px) {
+    img#biologo {
+    max-width: 40%; /*set the width or max-width*/
+    max-height: 70%;
+    position: absolute;
+    -moz-transform-origin: 0 0;
+    }
+}
