@@ -112,11 +112,11 @@
     <div class="content-section-b" style="margin-top: 80px;">
         <div class="container">
            <div class="panel panel-primary text-center">
-             <div class="panel-heading" style="font-size: 24px; background-color: #986544;"> Spring 2017 Gala! Friday, March 24, 2017
+             <div class="panel-heading" style="font-size: 24px; background-color: #986544;"> Spring 2017 Gala! Wednesday, May 31th, 2017
            </div>
            <div class="panel-body" style="text-align: left;">
              <img alt="Background Image" src="img/events/GALA/2017/FRONT.JPG" class="img-responsive" alt=""> <br>
-             We invite you to join us for a special evening with friends, dinner and live auction at the 24th Gala Celebration benefiting Biotech Partners. The 24th Celebration will be held on Friday, March 24, 2017, 6:00 p.m.-11:00 p.m. at The San Francisco Galleria Design Center, 101 Henry Adams Street, San Francisco, CA 94013. <br> <br>
+             We invite you to join us for a special evening with friends, dinner and live auction at the 24th Gala Celebration benefiting Biotech Partners. The 24th Celebration will be held on Wednesday, May 31th, 2017, 6:00 p.m.-10:00 p.m. at the Oakland Marriott City Center, 1001 Broadway Street, Oakland, CA 94607. <br> <br>
 
              If you are Interested in sponsoring this event, please contact Gala Chair Tina Etcheverry at etcheverrytina@yahoo.com
              <br>
@@ -127,8 +127,10 @@
              <h5>2017 Gala is sponsored by </h5>
              <br>
              <a href="http://pharma.bayer.com/">
-            <img class="background-image" alt="Background Image" src="img/sponsors/BayerHealthCare.jpg" style="width: 18%; height: 18%;">
+            <img class="background-image" alt="Background Image" src="img/sponsors/BayerHealthCare.jpg" style="width: 25%; height: 20%;">
             </a>
+
+            <!--
             <a href="http://gene.com/">
             <img class="background-image" alt="Background Image" src="img/sponsors/logo-genentech.jpg" style="width: 16%; height: 16%;">
             </a>
@@ -145,11 +147,11 @@
 
             <a href="http://kindredbio.com/">
             <img class="background-image" alt="Background Image" src="img/sponsors/Kindred Bio.png" style="width: 17%; height: 17%;">
-            </a>
+            </a> -->
 
              <hr>
 
-             <a href="https://www.amgen.com/">
+            <!-- <a href="https://www.amgen.com/">
             <img class="background-image" alt="Background Image" src="img/sponsors/amegen.png" style="width: 15%; height: 15%;">
             </a>
 
@@ -167,8 +169,18 @@
 
             <a href="http://www.lbl.gov/">
             <img class="background-image" alt="Background Image" src="img/sponsors/Berkeleylab.jpg" style="width: 10%; height: 10%;">
-            </a>
+            </a> -->
+
             <img class="background-image" id="getticketnow" alt="Background Image" src="img/sponsors/EtchWaveConsulting.jpg" style="width: 16%; height: 16%;">
+
+            <a href="http://www.biomarin.com/">
+            <img class="background-image" alt="Background Image" src="http://www.biomarin.com/wp-content/themes/biomarin/images/logo_biomarin.gif" style="width: 15%; height: 25%;">
+            </a>
+
+            <a href="http://www.aduro.com/">
+            <img class="background-image" alt="Background Image" src="http://www.aduro.com/themes/default/images/logo.png?20170106" style="width: 15%; height: 25%;">
+            </a>
+
             </div>
          </div>
         </div>
@@ -217,7 +229,7 @@
                              console.log(value);
                              if (value == "VIP Ticket"){
                                $("#informationHeader").text("VIP Ticket:");
-                               $("#informationaboutticket").text("Enjoy express check-in and $100 “Dine Out” Restaurant Raffle Ticket and $20 Wine Cage Raffle Ticket.");
+                               $("#informationaboutticket").text("Enjoy express check-in and $100 “Dinner Around the Bay” Restaurant Raffle Ticket and $20 Wine Cage Raffle Ticket");
                              }
                              else if (value == "Standard Ticket"){
                                $("#informationHeader").text("Standard Ticket:");
@@ -229,15 +241,22 @@
                              }
                              else if (value == "Restaurant Raffle Ticket"){
                                $("#informationHeader").text("Restaurant Raffle Ticket:");
-                               $("#informationaboutticket").text("Getting a raffle for the stuning restaurant experience.");
+                               $("#informationaboutticket").text("Purchase a chance to dine out for a year at fine Bay Area restaurants. The Raffle winner will receive dinner for two at several restaurants around the bay, with all proceeds supporting Biotech Partners programs.");
                              }
                              else if (value == "Wine Cage Key"){
                                $("#informationHeader").text("Wine Cage Key:");
-                               $("#informationaboutticket").text("Getting our special Wine Cage Key.");
+                               $("#informationaboutticket").text("Unlock a treasure chest of at least 12 bottles of fine red and white wines. Buy 1 or more! All proceeds benefit Biotech Partners.");
                              }
                          });
                      });
                  </script>
+
+                 <div class="Padding" style="margin: 3%; margin-top: 3%; background-color: #eee; border-radius: 6px; padding: 2px;">
+                    <h5 id="informationHeader"> VIP Ticket:</h5>
+                    <h5 id="informationaboutticket" style="color:#038ff3;">
+                      Enjoy express check-in and $100 “Dinner Around the Bay” Restaurant Raffle Ticket and $20 Wine Cage Raffle Ticket
+  Ticket</h5>
+                  </div>
 
                  <div class='form-row'>
                    <div class='col-xs-12 form-group card required'>
@@ -247,15 +266,16 @@
                  </div>
 
                  <div class='form-row'>
-                   <label class='control-label'style="color:red"> <small> *** Please inclduing all guest names If your order for more than one person, seperating name by comma. </small> </label>
+                   <label class='control-label'style="color:red"> <small> We will email you for your all the guests' names. </small> </label>
                  </div>
 
+                <!--
                  <div class='form-row'>
                    <div class='col-xs-12 form-group card required'>
                      <label class='control-label'>Guest(s)</label>
                      <input autocomplete="off" class='form-control card-number' size='20' type='text' name="custom" placeholder="John Milner, David Son, Kim Davis">
                    </div>
-                 </div>
+                 </div> -->
 
 
                  <input type="hidden" name="return" value="http://www.biotechpartners.org/events.html">
@@ -267,13 +287,6 @@
                  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 
                </form>
-             </div>
-             <div class='col-md-4'>
-               <div class="Padding" style=" margin-top: 25%; margin-right: 5%; background-color: #eee; border-radius: 6px; padding: 5px;">
-                  <h5 id="informationHeader"> VIP Ticket:</h5>
-                  <h5 id="informationaboutticket" style="color:#038ff3;">Enjoy express check-in and $100 “Dine Out” Restaurant Raffle Ticket and $20 Wine Cage Raffle
-Ticket</h5>
-                </div>
              </div>
          </div>
      </div>
