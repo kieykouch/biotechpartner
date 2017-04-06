@@ -292,6 +292,262 @@
      </div>
     </div>
 
+      <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBh2wqxa1Fae4-DzjSUiHlAKQQpKGlaaHQ&extension=.js"></script>
+      <script src="http://cdn.mapkit.io/v1/infobox.js"></script>
+      <link href="http://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+      <link href="http://cdn.mapkit.io/v1/infobox.css" rel="stylesheet" >
+
+      <script>
+          $(function() {
+          google.maps.event.addDomListener(window, 'load', init);
+          var map, markersArray = [];
+
+          function bindInfoWindow(marker, map, location) {
+              google.maps.event.addListener(marker, 'click', function() {
+                  function close(location) {
+                      location.ib.close();
+                      location.infoWindowVisible = false;
+                      location.ib = null;
+                  }
+
+                  if (location.infoWindowVisible === true) {
+                      close(location);
+                  } else {
+                      markersArray.forEach(function(loc, index){
+                          if (loc.ib && loc.ib !== null) {
+                              close(loc);
+                          }
+                      });
+
+                      var boxText = document.createElement('div');
+                      boxText.style.cssText = 'background: #fff;';
+                      boxText.classList.add('md-whiteframe-2dp');
+
+                      function buildPieces(location, el, part, icon) {
+                          if (location[part] === '') {
+                              return '';
+                          } else if (location.iw[part]) {
+                              switch(el){
+                                  case 'photo':
+                                      if (location.photo){
+                                          return '<div class="iw-photo" style="background-image: url(' + location.photo + ');"></div>';
+                                       } else {
+                                          return '';
+                                      }
+                                      break;
+                                  case 'iw-toolbar':
+                                      return '<div class="iw-toolbar"><h3 class="md-subhead">' + location.title + '</h3></div>';
+                                      break;
+                                  case 'div':
+                                      switch(part){
+                                          case 'email':
+                                              return '<div class="iw-details"><i class="material-icons" style="color:#4285f4;"><img src="//cdn.mapkit.io/v1/icons/' + icon + '.svg"/></i><span><a href="mailto:' + location.email + '" target="_blank">' + location.email + '</a></span></div>';
+                                              break;
+                                          case 'web':
+                                              return '<div class="iw-details"><i class="material-icons" style="color:#4285f4;"><img src="//cdn.mapkit.io/v1/icons/' + icon + '.svg"/></i><span><a href="' + location.web + '" target="_blank">' + location.web_formatted + '</a></span></div>';
+                                              break;
+                                          case 'desc':
+                                              return '<label class="iw-desc" for="cb_details"><input type="checkbox" id="cb_details"/><h3 class="iw-x-details">Details</h3><i class="material-icons toggle-open-details"><img src="//cdn.mapkit.io/v1/icons/' + icon + '.svg"/></i><p class="iw-x-details">' + location.desc + '</p></label>';
+                                              break;
+                                          default:
+                                              return '<div class="iw-details"><i class="material-icons"><img src="//cdn.mapkit.io/v1/icons/' + icon + '.svg"/></i><span>' + location[part] + '</span></div>';
+                                          break;
+                                      }
+                                      break;
+                                  case 'open_hours':
+                                      var items = '';
+                                      if (location.open_hours.length > 0){
+                                          for (var i = 0; i < location.open_hours.length; ++i) {
+                                              if (i !== 0){
+                                                  items += '<li><strong>' + location.open_hours[i].day + '</strong><strong>' + location.open_hours[i].hours +'</strong></li>';
+                                              }
+                                              var first = '<li><label for="cb_hours"><input type="checkbox" id="cb_hours"/><strong>' + location.open_hours[0].day + '</strong><strong>' + location.open_hours[0].hours +'</strong><i class="material-icons toggle-open-hours"><img src="//cdn.mapkit.io/v1/icons/keyboard_arrow_down.svg"/></i><ul>' + items + '</ul></label></li>';
+                                          }
+                                          return '<div class="iw-list"><i class="material-icons first-material-icons" style="color:#4285f4;"><img src="//cdn.mapkit.io/v1/icons/' + icon + '.svg"/></i><ul>' + first + '</ul></div>';
+                                       } else {
+                                          return '';
+                                      }
+                                      break;
+                               }
+                          } else {
+                              return '';
+                          }
+                      }
+
+                      boxText.innerHTML =
+                          buildPieces(location, 'photo', 'photo', '') +
+                          buildPieces(location, 'iw-toolbar', 'title', '') +
+                          buildPieces(location, 'div', 'address', 'location_on') +
+                          buildPieces(location, 'div', 'web', 'public') +
+                          buildPieces(location, 'div', 'email', 'email') +
+                          buildPieces(location, 'div', 'tel', 'phone') +
+                          buildPieces(location, 'div', 'int_tel', 'phone') +
+                          buildPieces(location, 'open_hours', 'open_hours', 'access_time') +
+                          buildPieces(location, 'div', 'desc', 'keyboard_arrow_down');
+
+                      var myOptions = {
+                          alignBottom: true,
+                          content: boxText,
+                          disableAutoPan: true,
+                          maxWidth: 0,
+                          pixelOffset: new google.maps.Size(-140, -40),
+                          zIndex: null,
+                          boxStyle: {
+                              opacity: 1,
+                              width: '280px'
+                          },
+                          closeBoxMargin: '0px 0px 0px 0px',
+                          infoBoxClearance: new google.maps.Size(1, 1),
+                          isHidden: false,
+                          pane: 'floatPane',
+                          enableEventPropagation: false
+                      };
+
+                      location.ib = new InfoBox(myOptions);
+                      location.ib.open(map, marker);
+                      location.infoWindowVisible = true;
+                  }
+              });
+          }
+
+          function init() {
+              var mapOptions = {
+                  center: new google.maps.LatLng(undefined,undefined),
+                  zoom: 17,
+                  gestureHandling: 'auto',
+                  fullscreenControl: false,
+                  zoomControl: true,
+                  disableDoubleClickZoom: true,
+                  mapTypeControl: true,
+                  mapTypeControlOptions: {
+                      style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                  },
+                  scaleControl: true,
+                  scrollwheel: true,
+                  streetViewControl: true,
+                  draggable : true,
+                  clickableIcons: false,
+                  mapTypeId: google.maps.MapTypeId.ROADMAP,
+                  styles: [
+          {
+              "featureType": "all",
+              "elementType": "labels",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.attraction",
+              "elementType": "labels",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.business",
+              "elementType": "labels",
+              "stylers": [
+                  {
+                      "visibility": "off"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.government",
+              "elementType": "labels",
+              "stylers": [
+                  {
+                      "visibility": "on"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.medical",
+              "elementType": "labels",
+              "stylers": [
+                  {
+                      "visibility": "on"
+                  }
+              ]
+          },
+          {
+              "featureType": "poi.park",
+              "elementType": "labels",
+              "stylers": [
+                  {
+                      "visibility": "on"
+                  }
+              ]
+          },
+          {
+              "featureType": "road",
+              "elementType": "labels",
+              "stylers": [
+                  {
+                      "visibility": "on"
+                  }
+              ]
+          },
+          {
+              "featureType": "transit",
+              "elementType": "labels",
+              "stylers": [
+                  {
+                      "visibility": "on"
+                  }
+              ]
+          }
+      ]
+              }
+              var mapElement = document.getElementById('mapkit-5944');
+              var map = new google.maps.Map(mapElement, mapOptions);
+              var locations = [
+                  {"title":"Oakland Marriott City Center","address":"1001 Broadway, Oakland, CA 94607, USA","desc":"","tel":"(510) 451-4000","int_tel":"+1 510-451-4000","email":"","web":"","web_formatted":"","open":"","time":"1453","lat":37.802210847364165,"lng":-122.27291213558198,"vicinity":"1001 Broadway, Oakland","open_hours":[{"day":"Monday","hours":"open24hours","$$hashKey":"object:3282"},{"day":"Tuesday","hours":"open24hours","$$hashKey":"object:3283"},{"day":"Wednesday","hours":"open24hours","$$hashKey":"object:3284"},{"day":"Thursday","hours":"open24hours","$$hashKey":"object:3285"},{"day":"Friday","hours":"open24hours","$$hashKey":"object:3286"},{"day":"Saturday","hours":"open24hours","$$hashKey":"object:3287"},{"day":"Sunday","hours":"open24hours","$$hashKey":"object:3288"}],"marker":{"fillColor":"#F44336","fillOpacity":1,"strokeWeight":0,"scale":1.5,"path":"M10.2,9.6C4.5,9.6-0.1,14.3-0.1,20c0,5.7,10.3,12.1,10.3,16.6c0-4.5,10.3-10.9,10.3-16.6S15.9,9.6,10.2,9.6z M10.2,24.3c-2.4,0-4.4-2-4.4-4.4s2-4.4,4.4-4.4s4.4,2,4.4,4.4S12.6,24.3,10.2,24.3z","anchor":{"x":10,"y":30},"origin":{"x":0,"y":0},"style":2},"iw":{"address":true,"desc":true,"email":true,"enable":true,"int_tel":true,"open":true,"open_hours":true,"photo":true,"tel":true,"title":true,"web":true}},{"title":"Oakland Marriott Venue Parking","address":"11th St & Clay St, Oakland, CA 94607, USA","desc":"Oakland Convention Center","tel":"","int_tel":"","email":"","web":"","web_formatted":"","open":"","time":"","lat":37.80290068610873,"lng":-122.27474432513122,"vicinity":"11th St & Clay St, Oakland, CA 94607, USA","open_hours":"","marker":"http://i.imgur.com/FdaqgLO.png?1","iw":{"address":true,"desc":true,"email":true,"enable":true,"int_tel":true,"open":true,"open_hours":true,"photo":true,"tel":true,"title":true,"web":true}},{"title":"Franklin 88 Garage","address":"989 Franklin St, Oakland, CA 94607, United States","desc":"","tel":"","int_tel":"","email":"","web":"","web_formatted":"","open":"","time":"","lat":37.8009797,"lng":-122.27202090000003,"vicinity":"989 Franklin St, Oakland, CA 94607, United States","open_hours":"","marker":"http://i.imgur.com/FdaqgLO.png?1","iw":{"address":true,"desc":true,"email":true,"enable":true,"int_tel":true,"open":true,"open_hours":true,"photo":true,"tel":true,"title":true,"web":true}},{"title":"Oakland City Center Parking","address":"11th St & Clay St, Oakland, CA 94607, USA","desc":"","tel":"","int_tel":"","email":"","web":"","web_formatted":"","open":"","time":"","lat":37.80309565939673,"lng":-122.27435272261505,"vicinity":"11th St & Clay St, Oakland, CA 94607, USA","open_hours":"","marker":"http://i.imgur.com/FdaqgLO.png?1","iw":{"address":true,"desc":true,"email":true,"enable":true,"int_tel":true,"open":true,"open_hours":true,"photo":true,"tel":true,"title":true,"web":true}},{"title":"Pacific Renaissance Plaza Parking","address":"388 Ninth St, Oakland, CA 94607, United States","desc":"","tel":"","int_tel":"","email":"","web":"","web_formatted":"","open":"","time":"","lat":37.801077933300924,"lng":-122.27143283995053,"vicinity":"388 Ninth St, Oakland, CA 94607, United States","open_hours":[],"marker":"http://i.imgur.com/FdaqgLO.png?1","iw":{"address":true,"desc":true,"email":true,"enable":true,"int_tel":true,"open":true,"open_hours":true,"photo":true,"tel":true,"title":true,"web":true}}
+              ];
+              for (i = 0; i < locations.length; i++) {
+                  marker = new google.maps.Marker({
+                      icon: locations[i].marker,
+                      position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+                      map: map,
+                      title: locations[i].title,
+                      address: locations[i].address,
+                      desc: locations[i].desc,
+                      tel: locations[i].tel,
+                      int_tel: locations[i].int_tel,
+                      vicinity: locations[i].vicinity,
+                      open: locations[i].open,
+                      open_hours: locations[i].open_hours,
+                      photo: locations[i].photo,
+                      time: locations[i].time,
+                      email: locations[i].email,
+                      web: locations[i].web,
+                      iw: locations[i].iw
+                  });
+                  markersArray.push(marker);
+
+                  if (locations[i].iw.enable === true){
+                      bindInfoWindow(marker, map, locations[i]);
+                  }
+              }
+          }
+      });
+      </script>
+
+      <style>
+          #mapkit-5944 {
+              height:450px;
+              width:650px;
+          }
+      </style>
+
+    <div id='mapkit-5944'></div>
+
+
+
     <br>
     <br>
 
